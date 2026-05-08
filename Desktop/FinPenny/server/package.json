@@ -1,0 +1,31 @@
+{
+  "name": "finpenny-backend",
+  "version": "1.0.0",
+  "description": "Finpenny — Backend Server (MVC)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "finpenny",
+    "newsletter",
+    "blog",
+    "contact"
+  ],
+  "author": "Finpenny",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.16.0",
+    "better-sqlite3": "^9.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "nodemailer": "^6.9.3",
+    "react-google-recaptcha": "^3.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
