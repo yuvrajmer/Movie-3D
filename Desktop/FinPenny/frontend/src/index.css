@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary-blue: #2B5A84;
+  --color-primary-red: #D9231D;
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@layer base {
+  body {
+    @apply font-inter bg-white text-slate-900 antialiased;
+  }
+
+  h1 span.italic {
+    font-family: var(--font-playfair);
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Navigation Style */
+  .nav-font {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2B5C91;
+    @apply transition-colors duration-300;
+  }
+
+  .header-divider {
+    @apply h-14 w-[1.5px] bg-gray-200 mx-8;
+  }
+
+  /* --- REFINED HERO STYLES --- */
+  .hero-bg-texture {
+    @apply absolute inset-0 z-0 opacity-20 pointer-events-none;
+    filter: blur(60px) brightness(1.1);
+    transform: scale(1.1);
+  }
+
+  .hero-heading {
+    @apply font-playfair font-bold text-primary-blue tracking-tight;
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    @apply text-slate-600 font-medium leading-relaxed max-w-[500px];
+    font-size: 19px;
+  }
+
+  /* --- ABOUT SECTION STYLES --- */
+  .about-subheading {
+    @apply flex items-center space-x-3 text-primary-red uppercase tracking-[0.2em] font-bold;
+    font-size: 12px;
+  }
+
+  .section-heading {
+    @apply text-primary-blue leading-tight font-inter;
+    font-size: 39px;
+  }
+
+  .feature-circle {
+    @apply w-14 h-14 rounded-full border border-primary-blue/30 flex items-center justify-center text-primary-blue transition-colors;
+    @apply hover:bg-primary-blue hover:text-white;
+  }
+
+  /* --- SERVICES SECTION STYLES --- */
+  .service-card-base {
+    @apply rounded-2xl transition-all duration-700 cursor-pointer;
+    /* High-performance bezier curve for the smooth slide seen in the video */
+    transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1);
+  }
+
+  /* --- SHARED COMPONENTS --- */
+  .feature-item {
+    @apply flex items-center space-x-3 text-primary-blue font-bold;
+    font-size: 15.5px;
+  }
+
+  .footer-ring {
+    @apply absolute w-48 h-48 border-[35px] border-white/10 rounded-full;
+  }
+}
+
+@layer utilities {
+  .shadow-hero-img {
+    filter: drop-shadow(-30px 30px 60px rgba(0, 0, 0, 0.12));
+  }
+  
+  .shadow-btn-primary {
+    box-shadow: 0 20px 40px -10px rgba(43, 90, 132, 0.3);
+  }
+
+  /* Animations */
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* Refined Wave reveal effect using clip-path for that "opening" look */
+  @keyframes wave-reveal {
+    0% { 
+      opacity: 0; 
+      transform: translateY(30px);
+      clip-path: inset(0 0 100% 0);
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 4s ease-in-out infinite;
+  }
+
+  .animate-text-reveal {
+    animation: wave-reveal 1.2s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+  }
+
+  /* Transition utility for the staggered card entry */
+  .card-slide-up {
+    transition: transform 1s cubic-bezier(0.2, 1, 0.2, 1), opacity 1s ease;
+  }
+
+  @keyframes icon-jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); } /* Adjust height of the jump here */
+  }
+
+  .animate-icon-jump:hover {
+    animation: icon-jump 0.6s ease-in-out infinite;
+  }
+
+  @keyframes icon-vibrate-jump {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-8px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-4px); }
+  }
+
+  .animate-jump-vibrate:hover {
+    animation: icon-vibrate-jump 0.5s ease-in-out;
+  }
+
+  /* Square icon container styling */
+  .square-symbol {
+    @apply flex items-center justify-center bg-gray-50 border border-gray-200 rounded-[4px] p-1 transition-colors;
+  }
+
+  /* This filter approximates #2B5A84 */
+@layer utilities {
+  .filter-theme-blue {
+    filter: invert(25%) sepia(48%) saturate(654%) hue-rotate(167deg) brightness(95%) contrast(88%);
+  }
+}
+}
